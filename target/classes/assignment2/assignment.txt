@@ -1,0 +1,17 @@
+Implement the Partial Digest problem given on page 90 of the book
+(attached). First, test the code by running it on some of the examples
+in the slides and book to make sure it is working correctly. Then write
+an automated testing routine that generates problems (random cut points
+X), creates the set of fragments L, then runs the Branch-and-Bound
+algorithm on L. For each run, the set of solutions must include the
+original set X. Once you have verified that the code is working over
+thousands of random problems, now evaluate the efficiency of the
+algorithm. Run the algorithm with a set of random problems of increasing
+size (the number of cut points, |X|). Start with around 15 cut points so
+the algorithm takes long enough to time. Generate a graph where the
+x-axis is the number of cut points and the y-axis is LOG of the run
+time. Generate a scatter plot where each point is the result of a single
+run. What is the estimated complexity of the algorithm (the function
+that maps problem size to time)?
+
+Submit your code, your graph, and a brief explanation of its performance.
