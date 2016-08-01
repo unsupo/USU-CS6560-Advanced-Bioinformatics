@@ -8,4 +8,4 @@ if [ "$2a" != "a" ]; then
 fi
 git add .
 git commit -m "$1"
-git push -u origin $branch
+git push -f -u origin $branch
