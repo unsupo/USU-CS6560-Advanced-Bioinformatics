@@ -1,0 +1,1 @@
+Flips Timing Study: [ 0.49014878  5.09782732]
