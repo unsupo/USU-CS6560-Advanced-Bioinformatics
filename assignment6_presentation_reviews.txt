@@ -1,0 +1,64 @@
+Jonathan Arndt
+	- ME
+
+Kalyan Bhonagiri
+	Insights from Mitochondrial DNA.  	
+
+Santhosh Boggarapu
+	Understanding Mitochondrial DNA.
+	Nice use of the wiki picture and good explanation of computer science problem.
+	Seemed a little rushed however.
+	Didn’t have dates.
+	Alignment on the proteins not DNA 
+
+Aditya Chandel
+	DNA Sequencing, shortest superstring problem
+	Good use of introduction and images coupled with explanation.
+	explanation of algorithm and dataset
+
+Vinay Chhodavadiya
+	DNA Sequencing
+	good off-slide explanations
+	lots of possible algorithms and good explanation for comparison. 
+	try to extend algorithm to modify synthetic data, test and develop at the same time 
+
+Michael Jasper
+	Great work, good slides.
+		
+
+Lokesh Kodavali
+	DNA Sequencing
+	good history with explanation 
+	a few seemingly wordy slides
+	seems very ambitious with repeating sections as open problem, reduce scope
+	phage lambda is a nice small problem
+	add additional extensions for real data 
+	investigate one particular extension or problem
+
+Curtis Larsen
+	impressive work
+
+Nivali Madabhushnam
+	DNA Sequencing - Shortest superstring
+	nice outline
+	definitions slide was quick, if at all
+	good sudo code included
+
+Aditya Mehra
+	Insights from Mitochondrial DNA
+	good image for explanation.
+	interesting guide tree made by UPGMA (unexplained)
+	hidden markov models will be used
+	gap penalties in real data with affine gap penalty
+	good explanation of tools for comparison.
+	tools: coffee.org, clustal.org
+	cluster omega
+
+Gopal Menon
+	exactly as described, good project
+
+Shobhit Mundra
+	DNA Sequencing
+	interesting layout of slides hard to read headers
+	quite short
+	
