@@ -258,6 +258,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../ogame/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../ogame/src/main/java/utilities/Testing.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../qa-automation/trunk/qa-automation-src/src/main/java/com/tomax/qa/automation/replication/tester/RepTester.java">
           <value>
             <set />

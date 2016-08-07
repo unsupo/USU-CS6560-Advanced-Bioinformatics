@@ -1,0 +1,11 @@
+This is intended to be a short summary of what you will be doing for
+your project with the purpose to organize your thoughts and plan of
+action. Keep this brief, no more than two pages. This can act as a first
+draft of your final report but missing the results and conclusion
+section. The report should include:
+
+The biological problem and its significance. You must cite the paper
+that you are focussing on. Feel free to use some illustrations from the
+paper to get your point across. The computer science problem you will be
+solving and its connection to the biological problem Your plan of action
+and schedule
