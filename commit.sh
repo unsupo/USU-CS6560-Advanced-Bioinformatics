@@ -1,7 +1,7 @@
 if [ "$1a" == "a" ]; then
    echo "must give a commit message"
    exit;
-fi;
+fi
 branch=master
 if [ "$2a" != "a" ]; then
    branch=$2
