@@ -1,20 +1,14 @@
 package utilities;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +16,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 public class GatherData {
 	public static void main(String[] args) throws IOException {
@@ -125,7 +114,7 @@ public class GatherData {
 
 	public static boolean exists(String s1, String s2) {
 		if(!new File(RESULTS_DIR).exists()) return false;
-		String[] ss1 = s1.split("\\\\"), ss2 = s2.split("\\\\");
+		String[] ss1 = s1.split("/"), ss2 = s2.split("/");
 		String name = ss1[ss1.length-2]+"_"+ss1[ss1.length-1].substring(0, ss1[ss1.length-1].indexOf(".")-1);
 		name += "_"+ss2[ss2.length-2]+"_"+ss2[ss2.length-1].substring(0, ss2[ss2.length-1].indexOf(".")-1);
 		
@@ -137,7 +126,7 @@ public class GatherData {
 		for(File fil : ff){
 			if(fil.getName().matches("string_[0-9]+.txt"))
 				m=true;
-			if(fil.getName().equals("score.txt"))
+			if("score.txt".equals(fil.getName()))
 				s = true;
 		}
 		
@@ -145,6 +134,7 @@ public class GatherData {
 	}
 	
 	public static void writeResults(String p1, String p2, String[] correctedStrings, int score) throws IOException {
+		System.out.println(RESULTS_DIR);
 		new File(RESULTS_DIR).mkdir();
 		p1 = p1.replace("/", "\\");
 		p2 = p2.replace("/", "\\");

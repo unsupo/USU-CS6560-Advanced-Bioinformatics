@@ -1,12 +1,12 @@
 package utilities.data;
 
+import utilities.Utility;
+import utilities.filesystem.FileOptions;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import utilities.Utility;
-import utilities.filesystem.FileOptions;
 
 public class ReadCVSFile {
 	public static void main(String[] args) throws IOException {
@@ -17,6 +17,7 @@ public class ReadCVSFile {
 	public final static String 	DIR 	= Utility.RESOURCE_DIRECTORY+"project/dna_sequences/",
 								TABLE 	= DIR+"Table_S2_samples.csv",
 								BACKUP 	= DIR+"leftovers.csv";
+
 	private static ReadCVSFile instance;
 	
 	private List<String> cvsFile, backupFile;

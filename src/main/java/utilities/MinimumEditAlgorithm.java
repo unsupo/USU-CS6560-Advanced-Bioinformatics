@@ -1,19 +1,14 @@
 package utilities;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.google.common.base.Optional;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Table;
-
-import utilities.data.ReadCVSFile;
 import utilities.data.gatherers.NCBIGatherer;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MinimumEditAlgorithm {
 	public static void main(String[] args) throws IOException{
@@ -62,11 +57,11 @@ public class MinimumEditAlgorithm {
 		String s1 = null, s2 = null;
 		me.score = 0;
 		try {
-			if(p1.endsWith(".txt") || p1.endsWith(NCBIGatherer.EXTENSION))
+			if(p1.endsWith(".txt") || p1.contains(NCBIGatherer.EXTENSION))
 				s1 = GatherData.readFileIntoString(p1);
 			else if(p1.endsWith(".zip"))
 				s1 = GatherData.readZipFileIntoString(p1, ".txt", true);
-			if(p2.endsWith(".txt") || p2.endsWith(NCBIGatherer.EXTENSION))
+			if(p2.endsWith(".txt") || p2.contains(NCBIGatherer.EXTENSION))
 				s2 = GatherData.readFileIntoString(p2);
 			else if(p2.endsWith(".zip"))
 				s2 = GatherData.readZipFileIntoString(p2, ".txt", true);
@@ -76,6 +71,7 @@ public class MinimumEditAlgorithm {
 				return;
 			System.out.println("Working on:\n\t"+p1+"\n\t"+p2);
 			String[] scores = me.getScoreDevideAndConquer(s1.trim().replaceAll("[^actgACTG]+", ""), s2.trim().replaceAll("[^actgACTG]+", ""));
+			System.out.println(p1+","+p2+","+me.score);
 			GatherData.writeResults(p1,p2,scores,me.score);
 		} catch (IOException e) {
 			e.printStackTrace();

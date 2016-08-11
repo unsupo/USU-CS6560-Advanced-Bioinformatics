@@ -1,18 +1,17 @@
 package utilities.data.gatherers;
 
+import org.jsoup.Connection.Response;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import utilities.Utility;
+import utilities.data.IGatherInstance;
+import utilities.data.ReadCVSFile;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
-import org.jsoup.Connection.Response;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import utilities.Utility;
-import utilities.data.IGatherInstance;
-import utilities.data.ReadCVSFile;
 
 public class NCBIGatherer implements IGatherInstance{
 	public static void main(String[] args) throws IOException {
@@ -58,7 +57,7 @@ public class NCBIGatherer implements IGatherInstance{
 			url = idAltMap.get(id);
 			String[] split = url.split("/");
 			if(!split[split.length-1].replaceAll("[0-9]+", "").isEmpty())
-				url = Jsoup.connect(url).userAgent("Chrome").timeout(10*1000).get().select("meta[name='ncbi_uidlist']").attr("content");
+				url = Jsoup.connect(url.trim()).userAgent("Chrome").timeout(10*1000).get().select("meta[name='ncbi_uidlist']").attr("content");
 		}else{
 			Response doc = Jsoup.connect(SEARCH_LINK+id)
 					.followRedirects(true)
