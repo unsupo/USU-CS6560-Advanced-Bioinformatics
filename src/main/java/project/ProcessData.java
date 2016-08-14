@@ -1,19 +1,24 @@
 package project;
 
-import utilities.MinimumEditAlgorithm;
-import utilities.data.ReadCVSFile;
-import utilities.data.gatherers.NCBIGatherer;
-import utilities.filesystem.FileOptions;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+
+import utilities.MinimumEditAlgorithm;
+import utilities.data.ReadCVSFile;
+import utilities.data.gatherers.NCBIGatherer;
+import utilities.filesystem.FileOptions;
 
 public class ProcessData {
 	static final File jarFile = new File(new ProcessData().getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
@@ -21,6 +26,43 @@ public class ProcessData {
 
 	
 	public static void main(String[] args) throws IOException, URISyntaxException {
+		String path = "C:\\Users\\Jonathan Arndt\\Downloads\\results\\VP24_results";
+		Table<String,String,Double> scores = HashBasedTable.create();
+		FileOptions.getAllFiles(path,"score.txt")//.forEach(a->{try{System.out.println(FileOptions.readFileIntoString(a.getAbsolutePath()));}catch(Exception e){}});;
+		.forEach(a->{
+			String[] split = a.getAbsolutePath().split("\\\\");
+			String[] names = split[split.length-2].split("_dna_sequences_");
+			String filesContents = null;
+			try {
+				filesContents = FileOptions.readFileIntoString(a.getAbsolutePath()).replaceAll("[^0-9]+", "").substring(0, 4);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			scores.put(names[0].replace("dna_sequences_", ""), names[1], Double.parseDouble(filesContents));
+			scores.put(names[1],names[0].replace("dna_sequences_", ""), Double.parseDouble(filesContents));
+		});
+		ArrayList<String> names = new ArrayList<>(scores.columnKeySet());
+		ArrayList<ArrayList<Double>> d = new ArrayList<>(names.size());
+		for(String name2 : names){
+			ArrayList<Double> sub = new ArrayList<>();
+			for (String name1 : names){
+				if(scores.get(name1, name2) == null)
+					System.out.println(name1+" "+name2);
+				sub.add(scores.get(name1, name2));
+			}
+			d.add(sub);
+		}
+//		System.out.println(scores);
+		for (int i = 0; i < d.size(); i++)
+			for (int j = 0; j < d.get(i).size(); j++)
+				d.get(i).set(j, Math.abs(d.get(i).get(j)-d.get(i).get(i)));
+		
+		
+		NeighborJoining.join(names, d).newick(System.out);
+		
+	}
+
+	public static void jarStuff(String[] args) throws IOException{
 		List<File> dnaSequences = FileOptions.getAllFilesEndsWith(ReadCVSFile.DIR, NCBIGatherer.EXTENSION);
 		if(dnaSequences.size() == 0){
 			final JarFile jar = new JarFile(jarFile);
@@ -43,7 +85,6 @@ public class ProcessData {
 			MinimumEditAlgorithm.compare(me, dnaSequences.get(s1).getAbsolutePath(), dnaSequences.get(s2).getAbsolutePath());
 		}
 	}
-
 
 	/**
 	 *  This method is responsible for extracting resource files from within the .jar to the temporary directory.
