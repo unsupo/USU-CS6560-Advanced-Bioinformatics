@@ -1,4 +1,4 @@
-This is the home directory for all assignments.
+This is the home directory for all assignments for Advanced Bioinformatics at Utah State University.  The course is actually CS5560 and CS6560 (the assignments are for both, but my project for CS6560 is included as well)
 
 Since this is the first assignment i'll work under the assumption that you have access to maven.  Otherwise its a free download of small size.
 
